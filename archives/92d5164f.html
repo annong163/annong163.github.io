@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Vue将页面导出为Excel, AnNong">
+    <meta name="keywords" content="Mysql分组统计最近七天数据，无则补零, AnNong">
     <meta name="description" content="Justice may be late, but will never be absent.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Vue将页面导出为Excel | AnNong</title>
+    <title>Mysql分组统计最近七天数据，无则补零 | AnNong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/cover_1.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Vue将页面导出为Excel</h1>
+                    <h1 class="description center-align post-title">Mysql分组统计最近七天数据，无则补零</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/VUE%E7%BB%84%E4%BB%B6/">
-                                <span class="chip bg-color">VUE组件</span>
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
-                            <a href="/tags/Ant-Design-Vue/">
-                                <span class="chip bg-color">Ant Design Vue</span>
+                            <a href="/tags/MYSQL/">
+                                <span class="chip bg-color">MYSQL</span>
                             </a>
                         
                     </div>
@@ -403,8 +403,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/VUE/" class="post-category">
-                                VUE
+                            <a href="/categories/MYSQL/" class="post-category">
+                                MYSQL
                             </a>
                         
                     </div>
@@ -425,7 +425,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    297
+                    137
                 </div>
                 
 
@@ -452,34 +452,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>整合jquery插件table2excel.js ，并且修改部分源码支持自定义文件名、自定义sheet工作表名称、表格自动添加边框。</p>
-<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>项目中有许多报表之类的统计 涉及表格跨行跨列较多故无法使用xlsx导出（因为需要一行一行处理跨行跨列），所以在Vue中整合了 jquery插件table2excel.js ，并且修改了部分源码支持自定义文件名、自定义sheet工作表名称、表格自动添加边框。</p>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="/img/%E5%AF%BC%E5%87%BA%E4%B8%BAexcel1.png"><br><img src="/img/%E5%AF%BC%E5%87%BA%E4%B8%BAexcel2.png"></p>
-<h2 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h2><h3 id="1-首先需要在Vue中引入jquery"><a href="#1-首先需要在Vue中引入jquery" class="headerlink" title="1.首先需要在Vue中引入jquery"></a>1.首先需要在Vue中引入jquery</h3><pre class=" language-javascript"><code class="language-javascript"> npm install jquery
+                <pre class=" language-java"><code class="language-java">SELECT
+  <span class="token function">DATE_FORMAT</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>timeDay<span class="token punctuation">,</span> <span class="token string">'%m-%d'</span><span class="token punctuation">)</span> AS time<span class="token punctuation">,</span>
+  <span class="token function">IFNULL</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>success<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> AS success<span class="token punctuation">,</span>
+  <span class="token function">IFNULL</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>fail<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> AS fail
+<span class="token function">FROM</span>
+  <span class="token punctuation">(</span>
+    SELECT
+      <span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">1</span> DAY<span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">2</span> DAY<span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">3</span> DAY<span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">4</span> DAY<span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">5</span> DAY<span class="token punctuation">)</span> AS timeDay
+    UNION ALL
+    SELECT
+      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">6</span> DAY<span class="token punctuation">)</span> AS timeDay
+  <span class="token punctuation">)</span> a
+  LEFT <span class="token function">JOIN</span> <span class="token punctuation">(</span>
+    SELECT
+      <span class="token function">date</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>last_execute_date<span class="token punctuation">)</span> AS time<span class="token punctuation">,</span>
+      <span class="token function">sum</span><span class="token punctuation">(</span>
+        CASE
+          WHEN d<span class="token punctuation">.</span>execute_status <span class="token operator">=</span> <span class="token string">'3'</span> THEN <span class="token number">1</span>
+          ELSE <span class="token number">0</span>
+        END
+      <span class="token punctuation">)</span> AS success<span class="token punctuation">,</span>
+      <span class="token function">sum</span><span class="token punctuation">(</span>
+        CASE
+          WHEN d<span class="token punctuation">.</span>execute_status <span class="token operator">=</span> <span class="token string">'4'</span> THEN <span class="token number">1</span>
+          ELSE <span class="token number">0</span>
+        END
+      <span class="token punctuation">)</span> AS fail
+    FROM
+      data_collect d
+    GROUP BY
+      <span class="token function">date</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>last_execute_date<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span> b ON a<span class="token punctuation">.</span>timeDay <span class="token operator">=</span> b<span class="token punctuation">.</span>time
+ORDER BY
+  time
 </code></pre>
-<h3 id="2-将下载好的table2excel放到项目中-比如我们用的antd脚手架直接放到util下-下载链接在文末"><a href="#2-将下载好的table2excel放到项目中-比如我们用的antd脚手架直接放到util下-下载链接在文末" class="headerlink" title="2.将下载好的table2excel放到项目中 比如我们用的antd脚手架直接放到util下(下载链接在文末)"></a>2.将下载好的table2excel放到项目中 比如我们用的antd脚手架直接放到util下(下载链接在文末)</h3><p><img src="/img/%E5%AF%BC%E5%87%BA%E4%B8%BAexcel3.png"></p>
-<h3 id="3-修改table2excel源码，在第一行引入Vue中的jquery-（最新文件已设置完毕，可忽略）"><a href="#3-修改table2excel源码，在第一行引入Vue中的jquery-（最新文件已设置完毕，可忽略）" class="headerlink" title="3.修改table2excel源码，在第一行引入Vue中的jquery （最新文件已设置完毕，可忽略）"></a>3.修改table2excel源码，在第一行引入Vue中的jquery （最新文件已设置完毕，可忽略）</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> jQuery <span class="token keyword">from</span> <span class="token string">'jquery'</span>
-</code></pre>
-<h3 id="4-在项目入口main-js中引入"><a href="#4-在项目入口main-js中引入" class="headerlink" title="4.在项目入口main.js中引入"></a>4.在项目入口main.js中引入</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">'./utils/table2excel'</span> <span class="token comment" spellcheck="true">// global table2excel</span>
-</code></pre>
-<h3 id="5-在demo-vue中使用table2excel"><a href="#5-在demo-vue中使用table2excel" class="headerlink" title="5.在demo.vue中使用table2excel"></a>5.在demo.vue中使用table2excel</h3><h4 id="5-1-引入jquery"><a href="#5-1-引入jquery" class="headerlink" title="5.1 引入jquery"></a>5.1 引入jquery</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> $ <span class="token keyword">from</span> <span class="token string">'jquery'</span>
-</code></pre>
-<h4 id="5-2-table中加入id"><a href="#5-2-table中加入id" class="headerlink" title="5.2 table中加入id"></a>5.2 table中加入id</h4><p><img src="/img/%E5%AF%BC%E5%87%BA%E4%B8%BAexcel4.png"></p>
-<h4 id="5-3-在methods方法中使用"><a href="#5-3-在methods方法中使用" class="headerlink" title="5.3 在methods方法中使用"></a>5.3 在methods方法中使用</h4><pre class=" language-javascript"><code class="language-javascript">
-methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token function">exportExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#aTable"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">table2excel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-         exclude<span class="token punctuation">:</span> <span class="token string">".noExl"</span><span class="token punctuation">,</span>
-         sheetName<span class="token punctuation">:</span> <span class="token string">"八项数据管控"</span><span class="token punctuation">,</span>
-         filename<span class="token punctuation">:</span> <span class="token string">"八项数据管控"</span><span class="token punctuation">,</span>
-         exclude_img<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-         exclude_links<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-         exclude_inputs<span class="token punctuation">:</span> <span class="token boolean">true</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h2><p><a target="_blank" rel="noopener" href="https://annong.lanzous.com/iDU8jnarhah">https://annong.lanzous.com/iDU8jnarhah</a></p>
 
                 
             </div>
@@ -506,7 +528,7 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://annong163.github.io/2022/04/27/vue-jiang-ye-mian-dao-chu-wei-excel/">https://annong163.github.io/2022/04/27/vue-jiang-ye-mian-dao-chu-wei-excel/</a>
+                    <a href="https://annong163.github.io/archives/92d5164f.html">https://annong163.github.io/archives/92d5164f.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,12 +566,12 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/VUE%E7%BB%84%E4%BB%B6/">
-                                    <span class="chip bg-color">VUE组件</span>
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
-                                <a href="/tags/Ant-Design-Vue/">
-                                    <span class="chip bg-color">Ant Design Vue</span>
+                                <a href="/tags/MYSQL/">
+                                    <span class="chip bg-color">MYSQL</span>
                                 </a>
                             
                         </div>
@@ -857,18 +879,19 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/27/mysql-date/">
+                <a href="/archives/2752da05.html">
                     <div class="card-image">
                         
-                        <img src="/img/cover_2.png" class="responsive-img" alt="Mysql 各类日期函数的使用">
                         
-                        <span class="card-title">Mysql 各类日期函数的使用</span>
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Vue在线接口调试组件">
+                        
+                        <span class="card-title">Vue在线接口调试组件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Mysql 查询今天，昨天，本月，今年，本季度，上一年等的sql语句
+                            支持Token、接口鉴权、参数自定义的Ant Design Vue在线接口调试组件。
                         
                     </div>
                     <div class="publish-info">
@@ -879,8 +902,8 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MYSQL/" class="post-category">
-                                    MYSQL
+                            <a href="/categories/VUE/" class="post-category">
+                                    VUE
                                 </a>
                             
                             
@@ -890,12 +913,12 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/tags/VUE%E7%BB%84%E4%BB%B6/">
+                        <span class="chip bg-color">VUE组件</span>
                     </a>
                     
-                    <a href="/tags/MYSQL/">
-                        <span class="chip bg-color">MYSQL</span>
+                    <a href="/tags/Ant-Design-Vue/">
+                        <span class="chip bg-color">Ant Design Vue</span>
                     </a>
                     
                 </div>
@@ -909,24 +932,24 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/27/zi-ding-yi-bian-hao/">
+                <a href="/archives/a20afd81.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="java自定义编号生成">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JDK8—Stream集合操作快速上手">
                         
-                        <span class="card-title">java自定义编号生成</span>
+                        <span class="card-title">JDK8—Stream集合操作快速上手</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            两种自定义编号生成方法，适用于自定义前缀、位数补零字符串等场景
+                            Java 8引入了全新的Stream API，stream是对集合对象功能的增强。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-26
                             </span>
                         <span class="publish-author">
                             
@@ -943,8 +966,12 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-                        <span class="chip bg-color">工具类</span>
+                    <a href="/tags/JDK8/">
+                        <span class="chip bg-color">JDK8</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9B%86%E5%90%88/">
+                        <span class="chip bg-color">集合</span>
                     </a>
                     
                 </div>
