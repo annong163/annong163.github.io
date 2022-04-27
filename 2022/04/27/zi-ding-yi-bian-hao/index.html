@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mysql分组统计最近七天数据，无则补零, AnNong">
+    <meta name="keywords" content="java自定义编号生成, AnNong">
     <meta name="description" content="Justice may be late, but will never be absent.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mysql分组统计最近七天数据，无则补零 | AnNong</title>
+    <title>java自定义编号生成 | AnNong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/cover_1.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mysql分组统计最近七天数据，无则补零</h1>
+                    <h1 class="description center-align post-title">java自定义编号生成</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
-                            </a>
-                        
-                            <a href="/tags/MYSQL/">
-                                <span class="chip bg-color">MYSQL</span>
+                            <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+                                <span class="chip bg-color">工具类</span>
                             </a>
                         
                     </div>
@@ -403,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MYSQL/" class="post-category">
-                                MYSQL
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
                             </a>
                         
                     </div>
@@ -425,7 +421,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    137
+                    340
                 </div>
                 
 
@@ -452,55 +448,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class=" language-java"><code class="language-java">SELECT
-  <span class="token function">DATE_FORMAT</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>timeDay<span class="token punctuation">,</span> <span class="token string">'%m-%d'</span><span class="token punctuation">)</span> AS time<span class="token punctuation">,</span>
-  <span class="token function">IFNULL</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>success<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> AS success<span class="token punctuation">,</span>
-  <span class="token function">IFNULL</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>fail<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> AS fail
-<span class="token function">FROM</span>
-  <span class="token punctuation">(</span>
-    SELECT
-      <span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">1</span> DAY<span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">2</span> DAY<span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">3</span> DAY<span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">4</span> DAY<span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">5</span> DAY<span class="token punctuation">)</span> AS timeDay
-    UNION ALL
-    SELECT
-      <span class="token function">date_sub</span><span class="token punctuation">(</span><span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">6</span> DAY<span class="token punctuation">)</span> AS timeDay
-  <span class="token punctuation">)</span> a
-  LEFT <span class="token function">JOIN</span> <span class="token punctuation">(</span>
-    SELECT
-      <span class="token function">date</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>last_execute_date<span class="token punctuation">)</span> AS time<span class="token punctuation">,</span>
-      <span class="token function">sum</span><span class="token punctuation">(</span>
-        CASE
-          WHEN d<span class="token punctuation">.</span>execute_status <span class="token operator">=</span> <span class="token string">'3'</span> THEN <span class="token number">1</span>
-          ELSE <span class="token number">0</span>
-        END
-      <span class="token punctuation">)</span> AS success<span class="token punctuation">,</span>
-      <span class="token function">sum</span><span class="token punctuation">(</span>
-        CASE
-          WHEN d<span class="token punctuation">.</span>execute_status <span class="token operator">=</span> <span class="token string">'4'</span> THEN <span class="token number">1</span>
-          ELSE <span class="token number">0</span>
-        END
-      <span class="token punctuation">)</span> AS fail
-    FROM
-      data_collect d
-    GROUP BY
-      <span class="token function">date</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>last_execute_date<span class="token punctuation">)</span>
-  <span class="token punctuation">)</span> b ON a<span class="token punctuation">.</span>timeDay <span class="token operator">=</span> b<span class="token punctuation">.</span>time
-ORDER BY
-  time
+                <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>工作中要求合同编号自动生成 格式 NYZL-001，NYZL-002。。。在我的StringUtils工具类中新增如下方法，该方法可以自定义前缀以及当前排到数字几了（可从数据库中查询最大的编号+1）</p>
+<h2 id="方法一：自定义前缀代码"><a href="#方法一：自定义前缀代码" class="headerlink" title="方法一：自定义前缀代码"></a>方法一：自定义前缀代码</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+     * 自动生成编号
+     * @param prefix  前缀，往往是一串字符串
+     * @param nowNum  当前要生成的数字
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> synchronized String <span class="token function">getConteactNo</span><span class="token punctuation">(</span>String prefix<span class="token punctuation">,</span>int nowNum <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        StringBuilder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        StringBuilder num <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        AtomicInteger count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span>nowNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 4位数字的采取编号处理。9999的情况下从001开始采取。</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">9999</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 采用4位数的数字进行序号处理。</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// num.append("00").append(count.getAndIncrement());</span>
+            num<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"00"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// num.append(count.getAndIncrement());</span>
+            num<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            num<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">getAndIncrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 组合。</span>
+        builder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        builder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> builder<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>incrementAndGet   返回加1后的新值<br/><br>getAndIncrement   返回旧值（即加1前的原始值)</p>
+</blockquote>
+<h2 id="方法二：自动递增返回位数字符串"><a href="#方法二：自动递增返回位数字符串" class="headerlink" title="方法二：自动递增返回位数字符串"></a>方法二：自动递增返回位数字符串</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AtomicNumUtils</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 递增生成 0000001 格式 线程安全
+     *
+     * @param nowNum  当前数值
+     * @param miniMum 生成的最小位数(自动补零)
+     * @return 返回值 = 当前值 + 1
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> synchronized String <span class="token function">getSn</span><span class="token punctuation">(</span>Integer nowNum<span class="token punctuation">,</span> Integer miniMum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NumberFormat formatter <span class="token operator">=</span> NumberFormat<span class="token punctuation">.</span><span class="token function">getNumberInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 整数显示最少位数不足前面补零</span>
+        formatter<span class="token punctuation">.</span><span class="token function">setMinimumIntegerDigits</span><span class="token punctuation">(</span>miniMum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        formatter<span class="token punctuation">.</span><span class="token function">setGroupingUsed</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        AtomicInteger count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span>nowNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> formatter<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 
                 
@@ -528,7 +531,7 @@ ORDER BY
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://annong163.github.io/2022/04/27/mysql-group/">https://annong163.github.io/2022/04/27/mysql-group/</a>
+                    <a href="https://annong163.github.io/2022/04/27/zi-ding-yi-bian-hao/">https://annong163.github.io/2022/04/27/zi-ding-yi-bian-hao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -566,12 +569,8 @@ ORDER BY
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
-                                </a>
-                            
-                                <a href="/tags/MYSQL/">
-                                    <span class="chip bg-color">MYSQL</span>
+                                <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+                                    <span class="chip bg-color">工具类</span>
                                 </a>
                             
                         </div>
@@ -879,19 +878,19 @@ ORDER BY
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/27/vue-zai-xian-jie-kou-diao-shi-zu-jian/">
+                <a href="/2022/04/27/vue-jiang-ye-mian-dao-chu-wei-excel/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Vue在线接口调试组件">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Vue将页面导出为Excel">
                         
-                        <span class="card-title">Vue在线接口调试组件</span>
+                        <span class="card-title">Vue将页面导出为Excel</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            支持Token、接口鉴权、参数自定义的Ant Design Vue在线接口调试组件。
+                            整合jquery插件table2excel.js，支持自定义文件名、自定义工作表名称、表格自动添加边框。
                         
                     </div>
                     <div class="publish-info">
@@ -932,31 +931,31 @@ ORDER BY
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/26/stream/">
+                <a href="/2022/04/27/vue-zai-xian-jie-kou-diao-shi-zu-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JDK8—Stream集合操作快速上手">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Vue在线接口调试组件">
                         
-                        <span class="card-title">JDK8—Stream集合操作快速上手</span>
+                        <span class="card-title">Vue在线接口调试组件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java 8引入了全新的Stream API，stream是对集合对象功能的增强。
+                            支持Token、接口鉴权、参数自定义的Ant Design Vue在线接口调试组件。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA/" class="post-category">
-                                    JAVA
+                            <a href="/categories/VUE/" class="post-category">
+                                    VUE
                                 </a>
                             
                             
@@ -966,12 +965,12 @@ ORDER BY
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JDK8/">
-                        <span class="chip bg-color">JDK8</span>
+                    <a href="/tags/VUE%E7%BB%84%E4%BB%B6/">
+                        <span class="chip bg-color">VUE组件</span>
                     </a>
                     
-                    <a href="/tags/%E9%9B%86%E5%90%88/">
-                        <span class="chip bg-color">集合</span>
+                    <a href="/tags/Ant-Design-Vue/">
+                        <span class="chip bg-color">Ant Design Vue</span>
                     </a>
                     
                 </div>
