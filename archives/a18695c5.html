@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mysql 各类日期函数的使用, AnNong">
+    <meta name="keywords" content="Springboot深度整合xxl-job, AnNong">
     <meta name="description" content="Justice may be late, but will never be absent.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mysql 各类日期函数的使用 | AnNong</title>
+    <title>Springboot深度整合xxl-job | AnNong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/cover_2.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/xxl-job.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mysql 各类日期函数的使用</h1>
+                    <h1 class="description center-align post-title">Springboot深度整合xxl-job</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
-                            </a>
-                        
-                            <a href="/tags/MYSQL/">
-                                <span class="chip bg-color">MYSQL</span>
+                            <a href="/tags/xxl-job/">
+                                <span class="chip bg-color">xxl-job</span>
                             </a>
                         
                     </div>
@@ -403,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MYSQL/" class="post-category">
-                                MYSQL
+                            <a href="/categories/xxl-job/" class="post-category">
+                                xxl-job
                             </a>
                         
                     </div>
@@ -416,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-27
+                    2022-06-10
                 </div>
                 
 
@@ -425,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    588
+                    178
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -452,60 +448,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li><p>今天</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 WHERETO_DAYS<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span> <span class="token operator">=</span>TO_DAYS<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>昨天</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> TO_DAYS<span class="token punctuation">(</span> <span class="token function">NOW</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">-</span> TO_DAYS<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>近七天</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> DATE_SUB<span class="token punctuation">(</span>CURDATE<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">7</span> DAY<span class="token punctuation">)</span> <span class="token operator">&lt;=</span><span class="token keyword">DATE</span><span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>本周内</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> YEARWEEK<span class="token punctuation">(</span>DATE_FORMAT<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> YEARWEEK<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>上一周</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> YEARWEEK<span class="token punctuation">(</span>DATE_FORMAT<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> YEARWEEK<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>30天内 注意这个不是本月是从当天起向前推30天</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> DATE_SUB<span class="token punctuation">(</span>CURDATE<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> INTERVAL <span class="token number">30</span> DAY<span class="token punctuation">)</span> <span class="token operator">&lt;=</span><span class="token keyword">DATE</span><span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>本月</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> DATE_FORMAT<span class="token punctuation">(</span> 【时间字段名】<span class="token punctuation">,</span> <span class="token string">'%Y%m'</span> <span class="token punctuation">)</span> <span class="token operator">=</span> DATE_FORMAT<span class="token punctuation">(</span> CURDATE<span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token string">'%Y%m'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>上一个月</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> PERIOD_DIFF<span class="token punctuation">(</span> DATE_FORMAT<span class="token punctuation">(</span> <span class="token function">now</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token string">'%Y%m'</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> DATE_FORMAT<span class="token punctuation">(</span> 【时间字段名】<span class="token punctuation">,</span> <span class="token string">'%Y%m'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>本季度</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> QUARTER<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token operator">=</span>QUARTER<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>上一季度</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> QUARTER<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token operator">=</span>QUARTER<span class="token punctuation">(</span>DATE_SUB<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>interval <span class="token number">1</span> QUARTER<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>本年度</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 <span class="token keyword">WHERE</span> YEAR<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token operator">=</span>YEAR<span class="token punctuation">(</span><span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-<li><p>上一年度</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 【想要的字段】 <span class="token keyword">FROM</span> 【表名】 WHEREYEAR<span class="token punctuation">(</span>【时间字段名】<span class="token punctuation">)</span><span class="token operator">=</span>YEAR<span class="token punctuation">(</span>date_sub<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>interval 1YEAR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-</ul>
-<blockquote>
-<p>日期函数说明：<br><br>TO_DAYS() 将日期参数返回转换为天，给定一个日期date，返回一个日期号码（自0年以来的天数）。<br>NOW() 函数返回当前的日期和时间。<br>CURDATE() 函数返回当前的日期，是日期不是时间<br>DATE_SUB(current,INTERVAL 【N】 DAY) 将current向前推 N天<br>DATE_ADD(current,INTERVAL 【N】 DAY) 将current向后推 N天<br>YEARWEEK 是获取年份和周数的一个函数，函数形式为 YEARWEEK(date[,mode])<br>DATE_FORMAT( article_last_update, ‘%Y%m’ ) 按照格式 格式化时间字符串<br>QUARTER(date) 返回日期的一年中的季度，范围为1到4。<br>YEAR(date) 返回日期的年份，范围为1000到9999，或者对于“零”日期返回0。<br>MONTH(date) 返回日期的月份，1月至12月的范围为1至12，对于包含月份为零的日期（如“0000-00-00”或“2008-00-00”），返回0。<br>WEEK(date[,mode]) 此函数返回日期的周号。 WEEK()的双参数使您能够指定星期是从星期天还是星期一开始，以及返回值是在0到53还是从1到53的范围内。如果省略mode参数，则值 使用了default_week_format系统变量。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>XXL-JOB 是一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。</p>
+<h2 id="深度整合思路"><a href="#深度整合思路" class="headerlink" title="深度整合思路"></a>深度整合思路</h2><p>内网搭建xxl-job-admin，通过接口形式调取新增、启动、停止、实时日志等方法实现项目内分布式大批量任务调度。</p>
+<h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p><img src="/img/xxl-%E6%9E%B6%E6%9E%84.png"></p>
+<h2 id="搭建xxl-job-admin"><a href="#搭建xxl-job-admin" class="headerlink" title="搭建xxl-job-admin"></a>搭建xxl-job-admin</h2><h3 id="1-拉取代码"><a href="#1-拉取代码" class="headerlink" title="1.拉取代码"></a>1.拉取代码</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/xuxueli0323/xxl-job.git">https://gitee.com/xuxueli0323/xxl-job.git</a></p>
+<h3 id="2-代码结构"><a href="#2-代码结构" class="headerlink" title="2.代码结构"></a>2.代码结构</h3><p><img src="/img/xxl-admin%E7%BB%93%E6%9E%84.png"></p>
+<h3 id="3-运行sql文件"><a href="#3-运行sql文件" class="headerlink" title="3.运行sql文件"></a>3.运行sql文件</h3><p><img src="/img/xxl-sql.png"></p>
+<h3 id="4-修改-xxl-job-admin-模块的-yml-文件"><a href="#4-修改-xxl-job-admin-模块的-yml-文件" class="headerlink" title="4.修改 xxl-job-admin 模块的 yml 文件"></a>4.修改 xxl-job-admin 模块的 yml 文件</h3><p><img src="/img/xxl-yml.png"></p>
+<h3 id="5-启动任务调度中心"><a href="#5-启动任务调度中心" class="headerlink" title="5.启动任务调度中心"></a>5.启动任务调度中心</h3><blockquote>
+<p>账号：admin 密码：123456 （初始状态下）。<br><img src="/img/xxl-login.png"></p>
 </blockquote>
-
+<h2 id="SpringBoot整合"><a href="#SpringBoot整合" class="headerlink" title="SpringBoot整合"></a>SpringBoot整合</h2>
                 
             </div>
             <hr/>
@@ -531,7 +484,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://annong163.github.io/archives/dce3f04e.html">https://annong163.github.io/archives/dce3f04e.html</a>
+                    <a href="https://annong163.github.io/archives/a18695c5.html">https://annong163.github.io/archives/a18695c5.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -569,12 +522,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
-                                </a>
-                            
-                                <a href="/tags/MYSQL/">
-                                    <span class="chip bg-color">MYSQL</span>
+                                <a href="/tags/xxl-job/">
+                                    <span class="chip bg-color">xxl-job</span>
                                 </a>
                             
                         </div>
@@ -878,9 +827,59 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/archives/a18695c5.html">
+                    <div class="card-image">
+                        
+                        <img src="/img/xxl-job.png" class="responsive-img" alt="Springboot深度整合xxl-job">
+                        
+                        <span class="card-title">Springboot深度整合xxl-job</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            XXL-JOB 是一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/xxl-job/" class="post-category">
+                                    xxl-job
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/xxl-job/">
+                        <span class="chip bg-color">xxl-job</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/archives/63f7645b.html">
                     <div class="card-image">
@@ -897,9 +896,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -925,59 +924,6 @@
                     
                     <a href="/tags/MYSQL%E4%BA%8B%E4%BB%B6/">
                         <span class="chip bg-color">MYSQL事件</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/archives/a345773a.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Vue将页面导出为Excel">
-                        
-                        <span class="card-title">Vue将页面导出为Excel</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            整合jquery插件table2excel.js，支持自定义文件名、自定义工作表名称、表格自动添加边框。
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/VUE/" class="post-category">
-                                    VUE
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/VUE%E7%BB%84%E4%BB%B6/">
-                        <span class="chip bg-color">VUE组件</span>
-                    </a>
-                    
-                    <a href="/tags/Ant-Design-Vue/">
-                        <span class="chip bg-color">Ant Design Vue</span>
                     </a>
                     
                 </div>
